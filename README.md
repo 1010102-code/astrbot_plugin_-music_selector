@@ -1,9 +1,5 @@
-# helloworld
-
-AstrBot 插件模板
-
-A template plugin for AstrBot plugin feature
-
-# 支持
-
-- [插件开发文档](https://docs.astrbot.app/dev/star/plugin-new.html)
+name: music_selector
+author: YourName
+version: 1.0.0
+description: 一个美观的点歌插件，支持搜索歌曲、列表展示（图片）和语音发送
+repo: https://github.com/your/repo  # 可选
