@@ -99,6 +99,10 @@ class MusicSelectorPlugin(Star):
             yield event.plain_result(self._generate_text_list(songs))
 
     @filter.event_message_type(filter.EventMessageType.ALL)
+    async def handle_choice(self, event: AstrMessageEvent):
+        text = event.get_message_str().strip()
+        if not text.isdigit():
+            return
 
         user_key = self._get_user_key(event)
         state = self.user_states.get(user_key)
