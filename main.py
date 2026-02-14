@@ -108,12 +108,11 @@ class MusicSelectorPlugin(Star):
             yield event.plain_result(self._generate_text_list(songs))
 
     # ---------- 处理用户选择的数字 ----------
-    @filter.on_message()
-    async def handle_choice(self, event: AstrMessageEvent):
-        """处理用户选择的数字序号（纯数字消息）"""
-        text = event.get_message_str().strip()
-        if not text.isdigit():
-            return
+    @filter.event_message_type(EventMessageType.ALL)
+async def handle_choice(self, event: AstrMessageEvent):
+    text = event.get_message_str().strip()
+    if not text.isdigit():
+        return
 
         user_key = self._get_user_key(event)
         state = self.user_states.get(user_key)
