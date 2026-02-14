@@ -5,6 +5,7 @@ import os
 from io import BytesIO
 from typing import Dict, Any, List, Optional
 
+# 正确的导入：只从 astrbot.api.event 导入 filter 和 AstrMessageEvent
 from astrbot.api.event import filter, AstrMessageEvent
 from astrbot.api.star import Context, Star, register
 from astrbot.api import logger
@@ -43,6 +44,7 @@ class MusicSelectorPlugin(Star):
 
     @filter.command("点歌")
     async def search_music(self, event: AstrMessageEvent, name: Optional[str] = None):
+        """点歌指令：发送“点歌 歌名”搜索歌曲，返回图片列表"""
         if not name:
             yield event.plain_result("请提供歌名，例如：点歌 晴天")
             return
@@ -100,6 +102,7 @@ class MusicSelectorPlugin(Star):
 
     @filter.event_message_type(filter.EventMessageType.ALL)
     async def handle_choice(self, event: AstrMessageEvent):
+        """处理用户选择的数字序号（纯数字消息）"""
         text = event.get_message_str().strip()
         if not text.isdigit():
             return
