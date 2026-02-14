@@ -5,7 +5,7 @@ import os
 from io import BytesIO
 from typing import Dict, Any, List, Optional
 
-from astrbot.api.event import filter, AstrMessageEvent, EventMessageType
+from astrbot.api.event import filter, AstrMessageEvent
 from astrbot.api.star import Context, Star, register
 from astrbot.api import logger
 from astrbot.api.message_components import Record, Image as CompImage
@@ -98,11 +98,7 @@ class MusicSelectorPlugin(Star):
         else:
             yield event.plain_result(self._generate_text_list(songs))
 
-    @filter.event_message_type(EventMessageType.ALL)
-    async def handle_choice(self, event: AstrMessageEvent):
-        text = event.get_message_str().strip()
-        if not text.isdigit():
-            return
+    @filter.event_message_type(filter.EventMessageType.ALL)
 
         user_key = self._get_user_key(event)
         state = self.user_states.get(user_key)
