@@ -108,7 +108,7 @@ class MusicSelectorPlugin(Star):
             yield event.plain_result(self._generate_text_list(songs))
 
     # ---------- 处理用户选择的数字 ----------
-    @filter.message_type()
+    @filter.on_message()
     async def handle_choice(self, event: AstrMessageEvent):
         """处理用户选择的数字序号（纯数字消息）"""
         text = event.get_message_str().strip()
