@@ -109,7 +109,7 @@ def generate_text_list(songs: List[Dict]) -> str:
     return "\n".join(lines)
 
 # ==================== 插件主类 ====================
-@register("nekomusic", "YourName", "点歌插件（改进版）", "1.0.0")
+@register("astrbot_plugin__music_selector", "1010102", "一个简单的点歌插件，支持搜索歌曲、列表展示和语音发送", "1.0.0")
 class Main(Star):
     def __init__(self, context: Context):
         super().__init__(context)
