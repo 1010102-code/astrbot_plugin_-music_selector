@@ -1,15 +1,14 @@
 from astrbot.api.star import Context, Star, register
 from astrbot.api import logger
-from astrbot.api.event import AstrMessageEvent
+from astrbot.api.event import AstrMessageEvent, filter
 
-@register("music_selector_test", "YourName", "测试插件", "1.0.0")
+@register("music_selector", "YourName", "点歌插件", "1.0.0")
 class MusicSelectorPlugin(Star):
     def __init__(self, context: Context):
         super().__init__(context)
-        logger.info("测试插件已加载，等待消息...")
+        logger.info("插件已加载，等待消息...")
 
-    async def on_message(self, event: AstrMessageEvent):
-        """重写此方法来接收所有消息（如果AstrBot支持）"""
-        logger.info(f"on_message 收到消息: {event.message_str}")
-        # 可以在这里回复测试
+    @filter.event_message_type(filter.EventMessageType.ALL)
+    async def on_any_message(self, event: AstrMessageEvent):
+        logger.info(f"收到消息: {event.message_str}")
         await event.send("收到消息了！")
