@@ -1,4 +1,5 @@
-# music_selector
-author: 1010102
+name: music_selector
+author: YourName
 version: 1.0.0
-description: 一个美观的点歌插件，支持搜索歌曲、列表展示（图片）和语音发送
+description: 点歌插件
+EOF
