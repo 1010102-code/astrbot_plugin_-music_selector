@@ -2,7 +2,7 @@ name: astrbot_plugin__music_selector
 display_name: 点歌插件
 desc: 一个简单的点歌插件，支持搜索歌曲、列表展示和语音发送
 version: v1.0.0
-author: 人1010102
+author: 咕咕嘎嘎
 repo: https://github.com/1010102-code/astrbot_plugin_-music_selector
 homepage: https://github.com/1010102-code/astrbot_plugin_-music_selector
 tags:
